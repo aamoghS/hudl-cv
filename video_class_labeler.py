@@ -21,6 +21,9 @@ def create_list_of_frame_images(cap):
         list_of_frames.append(img)
     return list_of_frames
 
+def get_slider_value(val):
+    print(val)
+
 root = create_window()
 
 videos_folder_path = Path('data/videos')
@@ -29,17 +32,23 @@ videos_path_list = [x for x in videos_folder_path.iterdir() if x.is_file()]
 cap = cv2.VideoCapture(videos_path_list[0])
 list_of_frame_images = create_list_of_frame_images(cap)
 
-label = tk.Label(root, 
-                 text = '0', 
-                 font = ('Arial', 40, 'bold'), 
-                 fg = 'red',
-                 image = list_of_frame_images[0],
-                 compound = tk.CENTER)
+slider = tk.Scale(
+        root,
+        from_ = 0,
+        to = max,
+        orient = tk.HORIZONTAL,
+        command = get_slider_value
+    )
+slider.pack()
+
+label = tk.Label(
+        root, 
+        text = '100', 
+        font = ('Arial', 40, 'bold'), 
+        fg = 'red',
+        image = list_of_frame_images[100],
+        compound = tk.CENTER
+    )
 label.pack()
 
 root.mainloop()
-
-'''for i, frame in zip(range(len(list_of_frames)), list_of_frames):
-    cv2.imshow(str(i), frame)
-    cv2.waitKey(0)'''
-
