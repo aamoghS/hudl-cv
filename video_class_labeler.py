@@ -41,7 +41,8 @@ slider = tk.Scale(
         from_ = 0,
         to = len(list_of_frame_images) - 1,
         orient = tk.HORIZONTAL,
-        length=200,
+        length = 400,
+        width = 25,
         command = get_slider_value
     )
 slider.pack()
@@ -55,5 +56,21 @@ label = tk.Label(
         compound = tk.CENTER
     )
 label.pack()
+
+entry = tk.Entry(
+    root,
+    width = 10
+)
+entry.pack()
+
+
+def print_text():
+    print(entry.get())
+
+button = tk.Button(
+    root,
+    command = print_text
+)
+button.pack()
 
 root.mainloop()
