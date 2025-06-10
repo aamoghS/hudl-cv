@@ -1,0 +1,6 @@
+path: C:/Users/cmont/hudl-cv/referee_detection/data
+train: images/train
+val: images/train
+
+names:
+  0: referee
